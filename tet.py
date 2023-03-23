@@ -53,33 +53,33 @@ def draw_styled_landmarks(image, results):
                              mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2)
                              )
 
-## Capturing live video
-cap = cv2.VideoCapture('Greetings_1of2/Greetings/49. How are you/MVI_0033.MOV')
-# Set mediapipe model
-with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
-    while cap.isOpened():
-
-        # Read feed
-        ret, frame = cap.read()
-        frame = cv2.resize(frame, (1600, 840))
-        # Make detections
-        image, results = mediapipe_detection(frame, holistic)
-        print(results)
-
-        # Draw landmarks
-        draw_styled_landmarks(image, results)
-
-        # Show to screen
-        cv2.imshow('OpenCV Feed', image)
-
-        # Break gracefully
-        if cv2.waitKey(10) & 0xFF == ord('q'):
-            break
-    cap.release()
-    cv2.destroyAllWindows()
-
-# print(len(results.left_hand_landmarks.landmark))
-result_test = extract_keypoints(results)
-np.save('0', result_test)
-x= np.load('0.npy')
-print(x.shape)
+# ## Capturing live video
+# cap = cv2.VideoCapture(0)
+# # Set mediapipe model
+# with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
+#     while cap.isOpened():
+#
+#         # Read feed
+#         ret, frame = cap.read()
+#         frame = cv2.resize(frame, (1600, 840))
+#         # Make detections
+#         image, results = mediapipe_detection(frame, holistic)
+#         print(results)
+#
+#         # Draw landmarks
+#         draw_styled_landmarks(image, results)
+#
+#         # Show to screen
+#         cv2.imshow('OpenCV Feed', image)
+#
+#         # Break gracefully
+#         if cv2.waitKey(10) & 0xFF == ord('q'):
+#             break
+#     cap.release()
+#     cv2.destroyAllWindows()
+#
+# # print(len(results.left_hand_landmarks.landmark))
+# result_test = extract_keypoints(results)
+# np.save('0', result_test)
+# x= np.load('0.npy')
+# print(x.shape)
